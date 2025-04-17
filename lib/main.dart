@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:image_search_app/core/routing/router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: 'assets/config/.env');
+  print("dotenv loaded");
+  print(dotenv.env['API_KEY']);
   runApp(const MyApp());
 }
 

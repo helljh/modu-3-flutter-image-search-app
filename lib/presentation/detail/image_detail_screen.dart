@@ -41,7 +41,7 @@ class _ImageDetailScreenState extends State<ImageDetailScreen> {
                 SizedBox(height: 20),
                 SizedBox(
                   width: double.infinity,
-                  height: 200,
+                  height: 428,
                   child: Image.network(model.largeImageUrl, fit: BoxFit.cover),
                 ),
                 SizedBox(height: 20),
