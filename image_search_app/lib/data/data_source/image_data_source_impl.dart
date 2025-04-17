@@ -11,11 +11,17 @@ final String baseUrl =
 class ImageDataSourceImpl implements ImageDataSouce {
   @override
   Future<HitDto> getImageById(int id) async {
-    final response = await http.get(Uri.parse('$baseUrl&id=$id)'));
+    final response = await http.get(Uri.parse('$baseUrl&id=$id'));
 
     if (response.statusCode == 200) {
-      final decodedData = jsonDecode(response.body);
-      return HitDto.fromJson(decodedData);
+      final List decodedData = jsonDecode(response.body)['hits'];
+
+      return decodedData
+          .map((e) => e as Map<String, dynamic>)
+          .toList()
+          .map((e) => HitDto.fromJson(e))
+          .toList()
+          .first;
     } else {
       return HitDto();
     }

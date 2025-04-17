@@ -11,7 +11,9 @@ class ImageModel with _$ImageModel {
   @override
   final String user;
   @override
-  final String imageUrl;
+  final String previewImageUrl;
+  @override
+  final String largeImageUrl;
   @override
   final String tags;
 
@@ -19,7 +21,8 @@ class ImageModel with _$ImageModel {
     required this.id,
     required this.userId,
     required this.user,
-    required this.imageUrl,
+    required this.previewImageUrl,
+    required this.largeImageUrl,
     required this.tags,
   });
 }

@@ -9,7 +9,7 @@ class GridImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
-      child: Image.network(model.imageUrl, fit: BoxFit.cover),
+      child: Image.network(model.previewImageUrl, fit: BoxFit.cover),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:image_search_app/core/routing/routes.dart';
 import 'package:image_search_app/data/data_source/data_source.dart';
 import 'package:image_search_app/data/repository/repository.dart';
 import 'package:image_search_app/presentation/detail/image_detail_screen.dart';
+import 'package:image_search_app/presentation/detail/image_detail_view_model.dart';
 import 'package:image_search_app/presentation/search/search_screen.dart';
 import 'package:image_search_app/presentation/search/search_view_model.dart';
 
@@ -24,7 +25,14 @@ final router = GoRouter(
       path: Routes.detail,
       builder: (context, state) {
         final id = state.pathParameters['id'];
-        return const ImageDetailScreen(id: 4148707);
+        return ImageDetailScreen(
+          id: int.parse(id!),
+          viewModel: ImageDetailViewModel(
+            imageRepository: ImageRepositoryImpl(
+              imageDataSouce: ImageDataSourceImpl(),
+            ),
+          ),
+        );
       },
     ),
   ],

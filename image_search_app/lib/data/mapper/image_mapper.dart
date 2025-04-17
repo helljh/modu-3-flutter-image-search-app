@@ -7,7 +7,8 @@ extension ImageMapper on HitDto {
       id: id != null ? id!.toInt() : 0,
       userId: userId != null ? userId!.toInt() : 0,
       user: user ?? '',
-      imageUrl: previewURL ?? '',
+      previewImageUrl: previewURL ?? '',
+      largeImageUrl: largeImageURL ?? '',
       tags: tags ?? '',
     );
   }
