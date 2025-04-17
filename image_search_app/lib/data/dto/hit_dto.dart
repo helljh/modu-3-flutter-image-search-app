@@ -8,13 +8,13 @@ class HitDto {
   final String? pageUrl;
   final String? type;
   final String? tags;
-  final String? previewUrl;
+  final String? previewURL;
   final num? previewWidth;
   final num? previewHeight;
-  final String? webformatUrl;
+  final String? webformatURL;
   final num? webformatWidth;
   final num? webformatHeight;
-  final String? largeImageUrl;
+  final String? largeImageURL;
   final num? imageWidth;
   final num? imageHeight;
   final num? imageSize;
@@ -23,6 +23,7 @@ class HitDto {
   final num? collections;
   final num? likes;
   final num? comments;
+  @JsonKey(name: 'user_id')
   final num? userId;
   final String? user;
   final String? userImageUrl;
@@ -32,13 +33,13 @@ class HitDto {
     this.pageUrl,
     this.type,
     this.tags,
-    this.previewUrl,
+    this.previewURL,
     this.previewWidth,
     this.previewHeight,
-    this.webformatUrl,
+    this.webformatURL,
     this.webformatWidth,
     this.webformatHeight,
-    this.largeImageUrl,
+    this.largeImageURL,
     this.imageWidth,
     this.imageHeight,
     this.imageSize,
