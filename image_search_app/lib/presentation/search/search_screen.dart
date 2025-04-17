@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_search_app/core/component/grid_image_container.dart';
 import 'package:image_search_app/ui/color_styles.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class SearchScreen extends StatelessWidget {
                     crossAxisSpacing: 15,
                   ),
                   itemBuilder: (context, index) {
-                    return Text('data');
+                    return GridImageContainer();
                   },
                   itemCount: 10,
                 ),
