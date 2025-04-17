@@ -14,6 +14,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   late List<ImageModel> images;
+  final TextEditingController controller = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -37,10 +38,17 @@ class _SearchScreenState extends State<SearchScreen> {
                   SizedBox(height: 20),
 
                   TextField(
+                    controller: controller,
                     style: TextStyle(color: ColorStyles.textColor),
                     onTapUpOutside: (event) => FocusScope.of(context).unfocus(),
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.search_rounded),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          widget.viewModel.getImagesByQuery(controller.text);
+                        },
+                        child: Icon(Icons.search_rounded),
+                      ),
+
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(color: Colors.black38),

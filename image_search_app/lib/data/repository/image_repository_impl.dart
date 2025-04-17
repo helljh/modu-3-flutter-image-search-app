@@ -10,14 +10,20 @@ class ImageRepositoryImpl implements ImageRepository {
     : _imageDataSouce = imageDataSouce;
 
   @override
-  Future<ImageModel> getImage(int id) async {
-    final response = await _imageDataSouce.getImage(id);
+  Future<ImageModel> getImageById(int id) async {
+    final response = await _imageDataSouce.getImageById(id);
     return response.toImage();
   }
 
   @override
   Future<List<ImageModel>> getImages() async {
     final response = await _imageDataSouce.getImages();
+    return response.map((e) => e.toImage()).toList();
+  }
+
+  @override
+  Future<List<ImageModel>> getImagesByQuery(String query) async {
+    final response = await _imageDataSouce.getImagesByQuery(query);
     return response.map((e) => e.toImage()).toList();
   }
 }

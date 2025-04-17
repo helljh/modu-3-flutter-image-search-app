@@ -20,4 +20,13 @@ class SearchViewModel with ChangeNotifier {
     _state = state.copyWith(imageModels: imageModels, isLoading: false);
     notifyListeners();
   }
+
+  Future<void> getImagesByQuery(String query) async {
+    _state = state.copyWith(isLoading: true);
+    notifyListeners();
+
+    final imageModels = await _imageRepository.getImagesByQuery(query);
+    _state = state.copyWith(imageModels: imageModels, isLoading: false);
+    notifyListeners();
+  }
 }

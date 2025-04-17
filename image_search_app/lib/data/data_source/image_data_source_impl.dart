@@ -10,8 +10,8 @@ final String baseUrl =
 
 class ImageDataSourceImpl implements ImageDataSouce {
   @override
-  Future<HitDto> getImage(int id) async {
-    final response = await http.get(Uri.parse('$baseUrl/&id=$id)'));
+  Future<HitDto> getImageById(int id) async {
+    final response = await http.get(Uri.parse('$baseUrl&id=$id)'));
 
     if (response.statusCode == 200) {
       final decodedData = jsonDecode(response.body);
@@ -28,6 +28,23 @@ class ImageDataSourceImpl implements ImageDataSouce {
     if (response.statusCode == 200) {
       final List decodeData = jsonDecode(response.body)['hits'];
       return decodeData
+          .map((e) => e as Map<String, dynamic>)
+          .toList()
+          .map((e) => HitDto.fromJson(e))
+          .toList();
+    } else {
+      return [];
+    }
+  }
+
+  @override
+  Future<List<HitDto>> getImagesByQuery(String query) async {
+    final response = await http.get(Uri.parse('$baseUrl&q=$query'));
+
+    if (response.statusCode == 200) {
+      final List decodedData = jsonDecode(response.body)['hits'];
+
+      return decodedData
           .map((e) => e as Map<String, dynamic>)
           .toList()
           .map((e) => HitDto.fromJson(e))
